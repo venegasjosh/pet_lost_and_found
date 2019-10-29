@@ -1,0 +1,16 @@
+<body>
+
+<form  (submit)="updateProduct(['product_id'])">
+  <h3>UPDATE PET DESCRIPTION </h3>
+      <h4>EDIT TITLE </h4> <textarea name="title" type="text" [(ngModel)]="updatedProduct.title"  minlength="3" maxlength="24" #title="ngModel" required ></textarea>
+      <h4>EDIT PET DESCRIPTION</h4>  <textarea name="price" type="text" placeholder="{{updatedProduct.price}}"  [(ngModel)]="updatedProduct.price" minlength="3" maxlength="24" #price="ngModel" required ></textarea>
+      <!-- <h4>EDIT IMAGE URL</h4>  <input type="url" name="imgUrl" placeholder="{{updatedProduct.imgUrl}}"  [(ngModel)]="updatedProduct.imgUrl" pattern="https?://.+" minlength="3" maxlength="24" #imgUrl="ngModel" required /> -->
+
+  <!-- <p>Pet found: <textarea name="title" value="{{updatedProduct.title}}"  [(ngModel)]="updatedProduct.title" ></textarea>
+  <p>Description: <textarea name="price" value="{{updatedProduct.price}}"  [(ngModel)]="updatedProduct.price" ></textarea>
+  <p>Img URL: <textarea name="updatedProduct.imgUrl" value="{{updatedProduct.imgUrl}}"  [(ngModel)]="updatedProduct.imgUrl" ></textarea> -->
+  <p><input class="btn btn-primary marg" type="submit" value="UPDATE PET" /></p> <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+  </form>
+  <hr>
+</body>
+  <router-outlet></router-outlet>

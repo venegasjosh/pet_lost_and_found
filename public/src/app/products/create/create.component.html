@@ -1,0 +1,76 @@
+<!-- ADD TASKS -->
+<div class="wrapper" style="border: solid #ff5100; border-radius: 10px 10px 10px 10px;">
+  <div class="border" style="text-align:center;"><br>
+    <form [formGroup]="form" (submit)="createProduct()" *ngIf="!isLoading">
+      <h3>Know of a pet lost from home? Let's help it find it's together!</h3>
+      <br><h4>1) Was this pet lost or found?</h4><br>
+
+
+
+
+
+      <mat-radio-group formControlName="type" aria-label="Select an option">
+        <mat-radio-button value="Lost">Lost</mat-radio-button><br>
+        <mat-radio-button value="Found">Found</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-error *ngIf="form.get('type').invalid" style="color: red">Please enter a post type.</mat-error>
+      <br><h4>2) Enter a brief title for your post</h4><br>
+<div style="width: 40%;
+margin-left: 30%;
+margin-right: 30%;">
+      <mat-form-field>
+        <input matInput type="text" formControlName="title"  style="background-color: pink;">
+
+      </mat-form-field><br></div>
+      <mat-error *ngIf="form.get('title').invalid" style="color: red">Please title the post with the name of the lost
+        pet if possible - must be at least 3 characters long</mat-error>
+
+
+
+      <br><h4>3) Describe your pet in detail</h4><br>
+<div style="width: 40%;
+margin-left: 30%;
+margin-right: 30%;">
+      <mat-form-field>
+        <input matInput type="text" formControlName="price" style="background-color: pink;">
+
+      </mat-form-field>
+</div>
+      <mat-error *ngIf="form.get('price').invalid" style="color: red">Please enter a detailed description of when and
+        where the pet was
+        lost
+        or found - must be at least 3 characters long</mat-error>
+
+
+
+
+
+      <br><h4>4) Select an image </h4><br>
+
+      
+        <button mat-stroked-button type="button" class="btn btn-outline-danger btn-lg" style="width: 30%;
+margin-left: 30%;
+margin-right: 30%; background-color: pink;" (click)="filePicker.click()">Pick Image</button>
+        <input type="file" style="display:none" #filePicker (change)="onImagePicked($event)">
+      
+
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('imgUrl').valid">
+        <img [src]="imagePreview" style="width: 200px; height: 200px;" [alt]="form.value.title">
+      </div>
+      <mat-error *ngIf="form.get('imgUrl').invalid" style="color: red">Please select an image of the pet that was lost
+        or found</mat-error>
+      <!-- <p class="text-danger" *ngIf="!imgUrl.valid">Please provide an image URL for the photo of your lost pet. Most smart
+      phones today allow you to provide a photo link. You will be unable to continue unless a valid link is provided.
+    </p><input type="url" pattern="https?://.+" name="imgUrl" [(ngModel)]="newProduct.imgUrl"
+      placeholder="example: google.com/apple/etc" minlength="3" maxlength="180" #imgUrl="ngModel" required /> -->
+
+      <!-- <p>What did you find? : <textarea name="newProduct.title" [(ngModel)]="newProduct.title" placeholder="Please include the pet's name if found on the tag." ></textarea>
+      <p>Description: <textarea name="newProduct.price" [(ngModel)]="newProduct.price" placeholder="2.99"></textarea>
+      <p>Enter Img URL: <input type="text" name="newProduct.imgUrl" [(ngModel)]="newProduct.imgUrl" placeholder="google.com/apple/etc"/></p> -->
+      <br><br><input type='submit' class="btn btn-md btn-info" value='Add Pet'> | <a href='/'
+        class="btn btn-md btn-info">Cancel</a>
+    </form>
+    <br><br>
+  </div>
+</div>

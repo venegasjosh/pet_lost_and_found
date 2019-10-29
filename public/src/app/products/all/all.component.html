@@ -1,0 +1,53 @@
+<div class="container">
+    <div *ngIf="products">
+      <div id="post" *ngFor="let product of products; index as i" style="border: solid #ff5100; border-radius: 10px 10px 10px 10px;" class="col sm-1 med-1 lg-1">
+        <ul style="list-style-type: none;">
+        <br>
+          <h5>{{ product.type }} Pet: {{ product.title }}</h5><br><img class="img-fluid" alt="Responsive image" style="border: solid #ff5100; border-radius: 10px 10px 10px 10px;" src="{{product.imgUrl}}"> <br><br><h6>Posted On: {{ product.created_at | date: 'fullDate'  }}</h6>
+            
+          <!-- <p> Pet name: {{ product.title }} </p>
+          <p> Pet type: {{ product.price }} </p>
+          <p> Created at: {{ product.created_at }} </p>
+   -->
+          <!-- COMMENT DROP DOWN BUTTON -->
+          <p><a [routerLink]="['../showone/', product._id]" class="btn btn-info btn-md">View Details</a> | <a [routerLink]="['../edit/', product._id]" class="btn btn-warning btn-md">Edit Post</a> |
+              
+            <button class="btn btn-primary btn-md" type="button" data-toggle="collapse" [attr.data-target]="'#collapseExample-'+i" aria-expanded="false" aria-controls="collapseExample">
+              Comments
+            </button>
+          </p> 
+          <div class="collapse" id="collapseExample-{{i}}">
+            <div class="card card-body">
+              
+              <div class="border" style="text-align:center;">
+              <div  *ngFor="let comment of allComments" style="border: solid #ff5100;" class="center">
+                <p>Posted By: {{ comment.author }}</p>
+                <p>Comment: {{ comment.comment }}</p>
+            </div>
+                    <form (submit)="createComment(product._id)" #formData="ngForm">
+                      <h3>Do you know about this pet?</h3>
+                      <!-- <input type="hidden" name="id" [(ngModel)]="newComment.id" value="{{ product._id }}" /> -->
+                      <p class="text-danger" *ngIf="!author.valid">Your Name: </p><input type="text" [(ngModel)]="newComment.author" name="author" minlength="3" maxlength="50" #author="ngModel" placeholder="e.g.: John Doe" required/>
+                      <p class="text-danger" *ngIf="!comment.valid">Your Comment: </p><textarea name="comment" [(ngModel)]="newComment.comment"
+      placeholder="Hi, I found your pet!"
+      minlength="3" maxlength="240" #comment="ngModel" required></textarea><br><br>
+                      <!-- <a [routerLink]="['../'+product._id+'/comment']" class="btn btn-info btn-md">TEST HERE </a> -->
+                      <input type='submit' class="btn btn-md btn-info"value='Create Comment' [disabled]="formData.form.invalid"> | <a href='/products/all' class="btn btn-md btn-info">Cancel</a>
+                    </form>
+                    <br>
+                  </div>
+                  <!-- {{ newComment | json}} -->
+              
+  
+            </div>
+          </div>
+          <!-- END -->
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+  
+
+  

@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+
+  <hr>
+  <h3>Let's help this pet find it's home!</h3>
+  
+      <h5>Pet found:</h5><p> {{ oneProduct.title }}</p>
+      <h5>Description:</h5><p> {{ oneProduct.price }}</p>
+      <h5>Post created on: </h5><p>{{ oneProduct.created_at | date: 'fullDate' }}</p>
+      <img class="img-fluid" alt="Responsive image" src="{{oneProduct.imgUrl}}"><br><br>
+
+      <button class="btn btn-danger" (click)="deleteProduct(oneProduct._id)">Remove Pet from Lost and Found</button>

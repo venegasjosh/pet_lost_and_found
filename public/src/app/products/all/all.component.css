@@ -1,0 +1,66 @@
+/* .title {
+    text-align: left;
+    margin: auto;
+    border: 3px solid green;
+padding: 10px;
+} */
+/* .center-btn {
+    width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align:center;
+    width: 150px;
+  text-align: center;
+  margin:0 auto;
+}                           
+    img {
+    height: 100%;
+    width: 100%;
+    } */
+
+    #post {
+        background: url("../../../../src/assets/images/sakura.png");
+    };
+                                            
+                                            @media only screen and (max-width: 480px) {
+                                                .sm-1 {
+                                                    display: 100%;
+                                                    margin: 0 auto;
+                                                    text-align:left;
+                                    
+                                                }
+                                                img {
+                                                    height: 200px;
+                                                    width: 200px;
+                                                    margin: 0 auto;
+                                                }
+                                            } 
+                                            
+                                            @media only screen and (min-width: 481px) {
+                                                .med-1 {
+                                                    width: 80%;
+                                                    text-align: left;
+                                                    margin: 0 auto;
+                                                }
+                                                img {
+                                                    height: 250px;
+                                                    width: 250px;
+                                                    margin: 0 auto;
+                                                }
+                                            }
+                                            
+                                            @media only screen and (min-width:1024px) {
+                                                .lg-1 {
+                                                    width: 40%;
+                                                    text-align: left;
+                                                    margin: 0 auto;
+                                                }
+                                                img {
+                                                    height: 250px;
+                                                    width: 250px;
+                                                    margin: 0 auto;
+                                                }
+                                            } 
+.card-body {
+background: url("../../../../src/assets/images/stripes-light.png");
+}
