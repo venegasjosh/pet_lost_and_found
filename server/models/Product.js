@@ -25,7 +25,7 @@ const ProductSchema = new mongoose.Schema({
 
   imgUrl: {
     type: String,
-    minlength: 2[ 'Category must be at least 1 character long!'],
+    minlength: [2, 'Category must be at least 1 character long!'],
     required: true
     // Regex Check for valid URL:
     // match: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ // No space at beginning or end
