@@ -4,7 +4,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var path = require("path");
-var server = app.listen(8000, function() {
+var port = 8000;
+var server = app.listen(port, function() {
   console.log("listening on port 8000");
 
 })
@@ -21,11 +22,11 @@ mongoose.connect("mongodb+srv://josh:Evilevilevil666@cluster0.shcz3.mongodb.net/
 
 app.use('/api/v1/',fileRoutes);
 
-app.use(express.urlencoded({limit: '50mb', extended: true}));
+// app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 // app.use(express.urlencoded({extended: true}));
 
-// app.use(bodyParser.json({extended: true}));
+app.use(bodyParser.json({extended: true}));
 
 // bodyParser = {
 //   json: {limit: '50mb', extended: true},

@@ -17,28 +17,28 @@ export class PostsService {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
       .get<{ message: string; posts: any; maxPosts: number }>(
-        "http://localhost:3000/api/posts" + queryParams
+        "http://api/posts" + queryParams
       )
       .pipe(
-        map(postData => {
+        map((postData) => {
           return {
-            posts: postData.posts.map(post => {
+            posts: postData.posts.map((post) => {
               return {
                 title: post.title,
                 content: post.content,
                 id: post._id,
-                imagePath: post.imagePath
+                imagePath: post.imagePath,
               };
             }),
-            maxPosts: postData.maxPosts
+            maxPosts: postData.maxPosts,
           };
         })
       )
-      .subscribe(transformedPostData => {
+      .subscribe((transformedPostData) => {
         this.posts = transformedPostData.posts;
         this.postsUpdated.next({
           posts: [...this.posts],
-          postCount: transformedPostData.maxPosts
+          postCount: transformedPostData.maxPosts,
         });
       });
   }
@@ -53,7 +53,7 @@ export class PostsService {
       title: string;
       content: string;
       imagePath: string;
-    }>("http://localhost:3000/api/posts/" + id);
+    }>("http://api/posts/" + id);
   }
 
   addPost(title: string, content: string, image: File) {
@@ -63,10 +63,10 @@ export class PostsService {
     postData.append("image", image, title);
     this.http
       .post<{ message: string; post: Post }>(
-        "http://localhost:3000/api/posts",
+        "http://api/posts",
         postData
       )
-      .subscribe(responseData => {
+      .subscribe((responseData) => {
         this.router.navigate(["/"]);
       });
   }
@@ -84,18 +84,17 @@ export class PostsService {
         id: id,
         title: title,
         content: content,
-        imagePath: image
+        imagePath: image,
       };
     }
     this.http
-      .put("http://localhost:3000/api/posts/" + id, postData)
-      .subscribe(response => {
+      .put("http://api/posts/" + id, postData)
+      .subscribe((response) => {
         this.router.navigate(["/"]);
       });
   }
 
   deletePost(postId: string) {
-    return this.http
-      .delete("http://localhost:3000/api/posts/" + postId);
+    return this.http.delete("http://api/posts/" + postId);
   }
 }
