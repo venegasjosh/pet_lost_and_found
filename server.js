@@ -15,13 +15,22 @@ const mongoConfig = {
   useNewUrlParser: true, 
   useCreateIndex: true
 }
-mongoose.connect("mongodb+srv://josh:adrienc00l@cluster0-7awvp.mongodb.net/test",{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://josh:Evilevilevil666@cluster0.shcz3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Mongo DB Connected..."))
     .catch(err => console.log(err));
 
 app.use('/api/v1/',fileRoutes);
 
-app.use(bodyParser.json());
+app.use(express.urlencoded({limit: '50mb', extended: true}));
+
+// app.use(express.urlencoded({extended: true}));
+
+// app.use(bodyParser.json({extended: true}));
+
+// bodyParser = {
+//   json: {limit: '50mb', extended: true},
+//   urlencoded: {limit: '50mb', extended: true}
+// };
 // mongoose.Promise = global.Promise;
 
 

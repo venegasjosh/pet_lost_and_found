@@ -55,7 +55,7 @@ export class CreateComponent implements OnInit {
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ imgUrl: file });
-    // console.log(this.form.get("imgUrl"));
+    console.log(this.form.get("imgUrl"));
     this.form.get("imgUrl").updateValueAndValidity();
 
     const reader = new FileReader();
