@@ -17,7 +17,7 @@ export class PostsService {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
       .get<{ message: string; posts: any; maxPosts: number }>(
-        "http://localhost:3000/api/posts" + queryParams
+        "http://api/posts" + queryParams
       )
       .pipe(
         map((postData) => {
@@ -53,7 +53,7 @@ export class PostsService {
       title: string;
       content: string;
       imagePath: string;
-    }>("http://localhost:3000/api/posts/" + id);
+    }>("http://api/posts/" + id);
   }
 
   addPost(title: string, content: string, image: File) {
@@ -63,7 +63,7 @@ export class PostsService {
     postData.append("image", image, title);
     this.http
       .post<{ message: string; post: Post }>(
-        "http://localhost:3000/api/posts",
+        "http://api/posts",
         postData
       )
       .subscribe((responseData) => {
@@ -88,13 +88,13 @@ export class PostsService {
       };
     }
     this.http
-      .put("http://localhost:3000/api/posts/" + id, postData)
+      .put("http://api/posts/" + id, postData)
       .subscribe((response) => {
         this.router.navigate(["/"]);
       });
   }
 
   deletePost(postId: string) {
-    return this.http.delete("http://localhost:3000/api/posts/" + postId);
+    return this.http.delete("http://api/posts/" + postId);
   }
 }
